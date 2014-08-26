@@ -1,0 +1,73 @@
+extends ../../../layouts/admin
+
+block head
+	title Mediafiles / Actions
+
+block feet
+	script(src='/views/admin/mediafiles/actions.min.js?#{cacheBreaker}')
+	script(src='/vendor/bootstrap/js/transition.js')
+
+
+block body
+	div.row
+		div.col-xs-12
+			div#header
+
+	script(type='text/template', id='tmpl-header')
+		div.page-header
+			h1
+				a(href='/admin/mediafiles/') Mediafiles 
+				a(href!='/admin/mediafiles/<%- _id %>/') /  <%- name %>
+
+		div#actions
+			#accordion.panel-group
+				|<% _.each(actionLog, function(lifecycle, i) {  %>
+				
+				.panel.panel-default
+				
+					.panel-heading
+						h4.panel-title
+							a(data-toggle='collapse', data-parent='#accordion', href!='#collapse<%-i%>')
+								| <%- lifecycle.desc %>
+
+					div(id!='collapse<%-i%>').panel-collapse.collapse.out
+						.panel-body
+							<% _.each(lifecycle.actions, function(action) { %>
+
+							<!-- used HTML for this table because Underscore.js messes with Jade indentation. I know it looks awful -->
+
+							<table class='actions table table-striped table-bordered table-responsive'>	
+
+							<thead>
+							<tr>
+							<th> <%- action.desc %>
+							</th>
+							</tr>
+							</thead>
+
+
+							<tbody>
+							<% _.each(action.details, function(detail, desc) { %>
+							<tr>
+							<th> <%- desc %> </th>
+							<th> <%- detail %> </th>
+							</tr>
+							<% }); %>
+							</tbody>
+
+							<% }); %>
+							</table>
+
+				
+				br
+				|<% }); %>
+
+				|<% if (actionLog.length === 0 || actionLog === 'undefined') { %>
+				p No actions yet
+				|<% } %>
+
+
+
+
+
+	script(type='text/template', id='data-record') !{data.record}

@@ -1,0 +1,307 @@
+
+{
+    "lifecycles" : [
+        {            
+            "stage": 1,
+            "desc" : "Transferring the media file to IFD",
+            "actions" : [
+                {
+                    "stage" : 1,
+                    "desc"   : "Content distributor uploads media file to SmartJog",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text"
+                    }
+                },
+                {
+                    "stage" : 2,
+                    "desc"   : "IFD downloads the media file from SmartJog",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "IFD Employee name" : "text"
+                    }
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "stage": 2,
+            "desc" : "Preparing the media file for distribution",
+            "actions" : [
+                {
+                    "stage" : 1,
+                    "desc"   : "Approved IFD employee decrypts the media file",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "IFD Employee name" : "text"
+                    }
+                },
+                
+                {
+                    "stage" : 2,
+                    "desc"   : "Approved IFD employee applies visible embedded text watermark",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "IFD Employee name" : "text",
+                        "Watermark details" : "text"
+                    }
+                },
+
+                {
+                    "stage" : 3,
+                    "desc"   : "Approved IFD employee completes transcoding the media file to specified formats",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "IFD Employee name" : "text",
+                        "Transcoding formats" : "select"
+                    }
+                },
+
+                {
+                    "stage" : 4,
+                    "desc"   : "Approved IFD employee applies Widevine DRM to the media file",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "IFD Employee name" : "text"
+                    }
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "stage": 3,
+            "desc" : "Transferring the media file to the aircraft",
+            "actions" : [
+                {
+                    "stage" : 1,
+                    "desc"   : "Approved IFD employee copies DRM-protected media file to encrypted USB drive",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "IFD Employee name" : "text",
+                        "USB drive serial number" : "text"
+                    }
+                },
+                
+                {
+                    "stage" : 2,
+                    "desc"   : "Approved IFD employee takes the encrypted USB drive from the IFD premises",
+                    "details" : {
+                        "Date and time" : "date",
+                        "IFD Employee name" : "text",
+                        "USB drive serial number" : "text"
+                    }
+                },
+
+                {
+                    "stage" : 3,
+                    "desc"   : "Approved airline employee takes the encrypted USB drive from the approved IFD employee",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Airline Employee name" : "text",
+                        "USB drive serial number" : "text"
+                    }
+                },
+
+                {
+                    "stage" : 4,
+                    "desc"   : "Approved airline employee brings the encrypted USB drive onto the aircraft",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Airline Employee name" : "text",
+                        "IFD Employee name" : "text",
+                        "USB drive serial number" : "text",
+                        "Aircraft identifier"  : "text"
+                    }
+                },
+
+                {
+                    "stage" : 5,
+                    "desc"   : "The DRM-protected media file is copied to the on-board server and deleted from the encrypted USB drive",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Airline Employee name" : "text",
+                        "USB drive serial number" : "text",
+                        "Aircraft identifier"  : "text"
+                    }
+                },
+
+                {
+                    "stage" : 6,
+                    "desc"   : "Approved IFD employee takes the encrypted USB drive from the approved airline employee",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Airline Employee name" : "text",
+                        "USB drive serial number" : "text",
+                        "Aircraft identifier"  : "text"
+                    }
+                },
+
+                {
+                    "stage" : 7,
+                    "desc"   : "Approved IFD employee returns the encrypted USB drive to the IFD premises",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Airline Employee name" : "text",
+                        "USB drive serial number" : "text",
+                        "GPS data"  : "text"
+                    }
+                },
+
+                {
+                    "stage" : 8,
+                    "desc"   : "Approved IFD employee formats the encrypted USB drive",
+                    "details" : {
+                        "Date and time" : "date",
+                        "IFD Employee name" : "text",
+                        "USB drive serial number" : "text"
+                    }
+                },
+
+                {
+                    "stage" : 9,
+                    "desc"   : "The aircraft starts to move and the license file is downloaded to the on-board license server",
+                    "details" : {
+                        "Date and time" : "date",
+                        "License file name" : "text",
+                        "Aircraft identifier" : "text"
+                    }
+                }
+            ]
+        },
+
+
+
+
+
+
+        {            
+            "stage": 4,
+            "desc" : "On-board the aircraft",
+            "actions" : [
+                {
+                    "stage" : 1,
+                    "desc"   : "Passengers view the media file",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "Device type and version" : "text",
+                        "OS type and version" : "text",
+                        "Duration of media file streamed" : "time"
+                    }
+                },
+                {
+                    "stage" : 2,
+                    "desc"   : "IFD Detector identifies issue",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "Device id, MAC address" : "text",
+                        "Device type and version" : "text",
+                        "OS type and version" : "text",
+                        "Duration of media file streamed" : "time",
+                        "Details of issue e.g. name of process identified" : "text",
+                        "Action taken e.g. streaming stopped, warning issued" : "text"
+                    }
+                }
+            ]
+        },
+
+
+
+
+
+        {            
+            "stage": 5,
+            "desc" : "Destroying the media file on the aircraft",
+            "actions" : [
+                {
+                    "stage" : 1,
+                    "desc"   : "The media file is deleted from the on-board server",
+                    "details" : {
+                        "Date and time" : "date",
+                        "Media file name"  : "text",
+                        "Aircraft identifier" : "text"
+                    }
+                },
+                {
+                    "stage" : 2,
+                    "desc"   : "The license is deleted from the on-board server",
+                    "details" : {
+                        "Date and time" : "date",
+                        "License file name"  : "text",
+                        "Aircraft identifier" : "text"
+                    }
+                },
+                {
+                    "stage" : 3,
+                    "desc"   : "The license is deleted from the IFD-hosted license server",
+                    "details" : {
+                        "Date and time" : "date",
+                        "License file name"  : "text"
+                    }
+                },
+                {
+                    "stage" : 4,
+                    "desc"   : "Approved IFD employee copies the encrypted media file to an LTO5 tape and puts the tape in the locked, fireproof safe",
+                    "details" : {
+                        "Date and time" : "date",
+                        "IFD employee name" : "text",
+                        "Media file name" : "text",
+                        "LTO5 tape serial number" : "text"
+                    }
+                },
+                {
+                    "stage" : 5,
+                    "desc"   : "Approved IFD employee deletes the encrypted media file from the EditShare server",
+                    "details" : {
+                        "Date and time" : "date",
+                        "IFD employee name" : "text",
+                        "Media file name" : "text"
+                    }
+                },
+                {
+                    "stage" : 6,
+                    "desc"   : "Approved IFD employee copies the encrypted AES key and the RSA public-private key pair to an encrypted USB drive, puts the encrypted USB drive into a locked box and puts this in the locked, fireproof safe",
+                    "details" : {
+                        "Date and time" : "date",
+                        "IFD employee name" : "text",
+                        "AES key file name" : "text",
+                        "RSA public-key file name" : "text",
+                        "RSA private-key file name" : "text",
+                        "Encrypted USB drive serial number" : "text"
+                    }
+                },
+                {
+                    "stage" : 7,
+                    "desc"   : "Approved IFD employee deletes the encrypted AES key and the RSA public-private key pair from the EditShare server",
+                    "details" : {
+                        "Date and time" : "date",
+                        "IFD employee name" : "text",
+                        "Media file name" : "text",
+                        "AES key file name" : "text",
+                        "RSA public-key file name" : "text",
+                        "RSA private-key file name" : "text"
+                    }
+                }
+            ]
+        }
+
+
+
+        
+    ]
+}

@@ -1,0 +1,21 @@
+extends ../layouts/default
+
+block head
+  title Home
+
+block neck
+  link(rel='stylesheet', href='/views/index.min.css?#{cacheBreaker}')
+
+block body
+  div.jumbotron
+    h1 Inflight 
+    p.lead
+      | Reporter Admin Interface
+      div
+        a.btn.btn-warning.btn-lg(href='/login/') Sign In
+        |  or&nbsp;
+        a.btn.btn-primary.btn-lg(href='/signup/') Create an Account
+        |  or&nbsp;
+        a.btn.btn-warning.btn-lg(href='/login/forgot/') Reset Your Password
+
+      div.clearfix
