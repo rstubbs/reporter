@@ -6,3 +6,5 @@ node_modules/*
 *.min.css
 /config.js
 .nodemonignore
+/public
+*.log

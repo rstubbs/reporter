@@ -149,7 +149,7 @@ exports.update = function(req, res, next){
 			lifecycle: req.body.lifecycle,
 			action: req.body.action
 		};
-
+	
 		req.app.db.models.Mediafile.findByIdAndUpdate(req.params.id, fieldsToSet, function(err, mediafile) {
 			if (err) {
 				return workflow.emit('exception', err);
