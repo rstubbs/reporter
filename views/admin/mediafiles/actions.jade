@@ -17,56 +17,42 @@ block body
 		div.page-header
 			h1
 				a(href='/admin/mediafiles/') Mediafiles 
-				a(href!='/admin/mediafiles/<%- _id %>/') /  <%- name %>
+				a(href!='/admin/mediafiles/<%- _id %>') /  <%- name %> - edit
 		div#actions
-			#accordion.panel-group
+				<% actionLog.reverse() %>
 				|<% _.each(actionLog, function(lifecycle, i) {  %>
-				
+
 				.panel.panel-default
 				
 					.panel-heading
-						h4.panel-title
-							a(data-toggle='collapse', data-parent='#accordion', href!='#collapse<%-i%>')
-								| <%- lifecycle.desc %>
-
-					div(id!='collapse<%-i%>').panel-collapse.collapse.out
-						.panel-body
-							<% _.each(lifecycle.actions, function(action) { %>
-
-							<!-- used HTML for this table because Underscore.js messes with Jade indentation. I know it looks awful -->
-
-							<table class='actions table table-striped table-bordered table-responsive'>	
-
-							<thead>
-							<tr>
-							<th> <%- action.desc %>
-							</th>
-							</tr>
-							</thead>
-
-
-							<tbody>
-							<% _.each(action.details, function(detail, desc) { %>
-							<tr>
-							<th> <%- desc %> </th>
-							<th> <%- detail %> </th>
-							</tr>
-							<% }); %>
-							</tbody>
-
-							<% }); %>
-							</table>
-
-				
-				br
+						h4.panel-title 
+						table(cellpadding="10" ) 
+							tr
+								th(style='width: '+(15)+'%')   Name
+								th(style='width: '+(5)+'%')
+								th(style='width: '+(30)+'%')   Lifecycle
+								th(style='width: '+(5)+'%')
+								th(style='width: '+(30)+'%')   Action
+								th(style='width: '+(5)+'%')
+								th(style='width: '+(10)+'%')   Time Stamp
+							tr
+								td <%- actionLog[i].name      %>	
+								td						
+								td <%- actionLog[i].lifecycle %>
+								td
+								td <%- actionLog[i].action    %>
+								td
+								td <%- actionLog[i].timestamp %>
+							
 				|<% }); %>
 
 				|<% if (actionLog.length === 0 || actionLog === 'undefined') { %>
 				p No actions yet 
-				|<% } %>
+				|<% } %>	
 
 
 
 
 
 	script(type='text/template', id='data-record') !{data.record}
+	script(type='text/template', id='data-lifecycles') !{data.lifecycles}

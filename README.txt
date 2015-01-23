@@ -63,14 +63,13 @@ Set a new password.
 - Administrator level permissions that override group permissions.
 - Global admin quick search component.
 - File management system(Allows basic CRUD fucntionality)
+- File History logging
 
 ******************************************************************
 ******************************************************************
 
 --To Be Added Features--
 
--Action logging for eqach individual file.
--Displaying the history of changes to a file.
 -//to be decided
 
 ******************************************************************

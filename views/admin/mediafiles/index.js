@@ -48,6 +48,7 @@ exports.read = function(req, res, next){
 			var record = escape(JSON.stringify(mediafile));
 			var lifecycles = escape(JSON.stringify(require('../../../lifecycles.json')));
 
+
 			res.render('admin/mediafiles/details', { data: { record: record , lifecycles: lifecycles } });
 		}
 	});
@@ -63,7 +64,11 @@ exports.readActions = function(req, res, next){
 			res.send(mediafile);
 		}
 		else {
-			res.render('admin/mediafiles/actions', { data: { record: escape(JSON.stringify(mediafile)) } });
+			var record = escape(JSON.stringify(mediafile));
+			var lifecycles = escape(JSON.stringify(require('../../../lifecycles.json')));
+
+			
+			res.render('admin/mediafiles/actions',{ data: { record: record , lifecycles: lifecycles } });
 		}
 	});
 };
@@ -144,13 +149,24 @@ exports.update = function(req, res, next){
 	});
 
 	workflow.on('patchMediafile', function() {
+		//gets time and date values
+		var d = new Date();
+		var mins = d.getMinutes();
+		if(mins <=9 ){mins = '0'+mins;}
+		var dateData = (d.getHours())+':'+(mins)+'  '+(d.getDate())+'/'+(d.getMonth().toString()+1)+'/'+(d.getFullYear());
+
+		//get text values for lifecycly and action before and pass them into the field.
+		var lifecycleString = JSON.stringify(require('../../../lifecycles.json'));
+		var lifecycleText = JSON.parse(lifecycleString);
+
 		var fieldsToSet = {
 			name: req.body.name,
-			lifecycle: req.body.lifecycle,
-			action: req.body.action
+			lifecycle: lifecycleText.lifecycles[ req.body.lifecycle-1].desc,
+			action: lifecycleText.lifecycles[req.body.lifecycle-1].actions[req.body.action-1].desc,
+			timestamp: dateData
 		};
-	
-		req.app.db.models.Mediafile.findByIdAndUpdate(req.params.id, fieldsToSet, function(err, mediafile) {
+
+		req.app.db.models.Mediafile.findByIdAndUpdate(req.params.id, {$push:{actionLog: fieldsToSet}}, fieldsToSet, function(err, mediafile) {
 			if (err) {
 				return workflow.emit('exception', err);
 			}
